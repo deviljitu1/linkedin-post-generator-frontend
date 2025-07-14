@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn AI Post Generator - Powered by Google Gemini</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fab fa-linkedin"></i> LinkedIn AI Post Generator</h1>
+                <p>Create engaging LinkedIn posts with Google Gemini AI-powered content generation</p>
+                <div class="feature-badges">
+                    <span class="badge"><i class="fas fa-magic"></i> Gemini AI</span>
+                    <span class="badge"><i class="fas fa-link"></i> Article Summarizer</span>
+                    <span class="badge"><i class="fas fa-mobile-alt"></i> Mobile Ready</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Generator Form -->
+            <div class="generator-card">
+                <h2><i class="fas fa-magic"></i> Generate Your Post</h2>
+                
+                <form id="postForm" class="generator-form">
+                    <div class="form-group">
+                        <label for="topic">
+                            <i class="fas fa-lightbulb"></i> Topic or Article URL
+                        </label>
+                        <input type="text" id="topic" placeholder="Enter a topic or paste an article URL to summarize">
+                        <div class="input-help">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Enter a topic (e.g., "web development project") or paste an article URL to automatically summarize and create a LinkedIn post</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry">
+                            <i class="fas fa-industry"></i> Industry
+                        </label>
+                        <select id="industry">
+                            <option value="technology">Technology</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="business">Business</option>
+                            <option value="finance">Finance</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="education">Education</option>
+                            <option value="consulting">Consulting</option>
+                            <option value="startup">Startup</option>
+                            <option value="others">Others</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tone">
+                            <i class="fas fa-comments"></i> Tone
+                        </label>
+                        <select id="tone">
+                            <option value="professional">Professional</option>
+                            <option value="casual">Casual</option>
+                            <option value="enthusiastic">Enthusiastic</option>
+                            <option value="educational">Educational</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="generate-btn">
+                        <i class="fas fa-wand-magic-sparkles"></i> Generate Post
+                    </button>
+                </form>
+            </div>
+
+            <!-- Generated Post Display -->
+            <div class="result-card" id="resultCard" style="display: none;">
+                <h2><i class="fas fa-file-alt"></i> Generated Post</h2>
+                
+                <div class="post-preview">
+                    <div class="post-content" id="generatedPost"></div>
+                    
+                    <div class="post-actions">
+                        <button class="action-btn copy-btn" onclick="copyToClipboard()">
+                            <i class="fas fa-copy"></i> Copy to Clipboard
+                        </button>
+                        <button class="action-btn linkedin-btn" onclick="openLinkedIn()">
+                            <i class="fab fa-linkedin"></i> Open LinkedIn
+                        </button>
+                        <button class="action-btn new-btn" onclick="generateNew()">
+                            <i class="fas fa-plus"></i> Generate Another
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>Generating your post...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="errorText"></span>
+            </div>
+        </main>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2><i class="fas fa-star"></i> Why Use Our AI Generator?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Google Gemini AI</h3>
+                    <p>Uses advanced Google Gemini AI to create engaging, professional content</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-link"></i>
+                    <h3>Article Summarizer</h3>
+                    <p>Paste any article URL and get an instant LinkedIn summary</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Save Time</h3>
+                    <p>Generate posts in seconds instead of hours</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Better Engagement</h3>
+                    <p>Optimized for maximum LinkedIn engagement</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Customizable</h3>
+                    <p>Choose your topic, industry, and tone</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works perfectly on all devices and screen sizes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <h2><i class="fas fa-cogs"></i> How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Enter Topic or URL</h3>
+                    <p>Type a topic or paste an article URL. Our AI will detect URLs automatically and summarize the content.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Choose Settings</h3>
+                    <p>Select your industry and preferred tone to customize the generated content.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Generate & Share</h3>
+                    <p>Get your professional LinkedIn post instantly. Copy to clipboard or share directly.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 LinkedIn AI Post Generator. Powered by Google Gemini AI.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
