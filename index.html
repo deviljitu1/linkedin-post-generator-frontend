@@ -70,14 +70,22 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="model">
-                            <i class="fas fa-robot"></i> Model
-                        </label>
-                        <select id="model">
-                            <option value="gemini">Gemini</option>
-                            <option value="openrouter">OpenRouter</option>
-                        </select>
+                    <div style="display: flex; gap: 16px; align-items: flex-end;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="model">
+                                <i class="fas fa-robot"></i> Model
+                            </label>
+                            <select id="model">
+                                <option value="gemini">Gemini</option>
+                                <option value="openrouter">OpenRouter</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="wordCount">
+                                <i class="fas fa-sort-numeric-up"></i> Word Count
+                            </label>
+                            <input type="number" id="wordCount" min="30" max="400" step="10" value="80" style="width: 100%;" />
+                        </div>
                     </div>
 
                     <button type="submit" class="generate-btn">

@@ -24,6 +24,7 @@ async function handleFormSubmit(e) {
     const industry = document.getElementById('industry').value;
     const tone = document.getElementById('tone').value;
     const model = document.getElementById('model').value;
+    const wordCount = parseInt(document.getElementById('wordCount').value, 10);
     
     // Show loading spinner
     showLoading();
@@ -35,9 +36,9 @@ async function handleFormSubmit(e) {
         
         // Check if topic is a URL
         if (isValidURL(topic)) {
-            post = await generateLinkedInPostFromArticle(topic, industry, tone, model);
+            post = await generateLinkedInPostFromArticle(topic, industry, tone, model, wordCount);
         } else {
-            post = await generateLinkedInPost(topic, industry, tone, model);
+            post = await generateLinkedInPost(topic, industry, tone, model, wordCount);
         }
         
         displayResult(post);
@@ -124,7 +125,7 @@ async function extractArticleContent(url) {
 }
 
 // Generate LinkedIn post from article URL using backend API
-async function generateLinkedInPostFromArticle(url, industry, tone, model) {
+async function generateLinkedInPostFromArticle(url, industry, tone, model, wordCount) {
     console.log('Making article API call to:', API_URL);
     
     const response = await fetch(API_URL, {
@@ -137,7 +138,8 @@ async function generateLinkedInPostFromArticle(url, industry, tone, model) {
             url: url,
             industry: industry,
             tone: tone,
-            model: model
+            model: model,
+            word_count: wordCount
         })
     });
     
@@ -155,7 +157,7 @@ async function generateLinkedInPostFromArticle(url, industry, tone, model) {
 }
 
 // Generate LinkedIn post using backend API
-async function generateLinkedInPost(topic, industry, tone, model) {
+async function generateLinkedInPost(topic, industry, tone, model, wordCount) {
     console.log('Making API call to:', API_URL);
     
     const response = await fetch(API_URL, {
@@ -168,7 +170,8 @@ async function generateLinkedInPost(topic, industry, tone, model) {
             topic: topic,
             industry: industry,
             tone: tone,
-            model: model
+            model: model,
+            word_count: wordCount
         })
     });
     
