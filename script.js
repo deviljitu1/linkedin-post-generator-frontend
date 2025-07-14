@@ -1,5 +1,6 @@
 // API Configuration - API calls will be made through the backend
-const API_URL = 'http://localhost:8000/api/generate-post';
+// IMPORTANT: This is your actual Render backend URL
+const API_URL = 'https://linkedin-post-generator-backend-dxes.onrender.com/api/generate-post';
 
 // DOM Elements
 const postForm = document.getElementById('postForm');
